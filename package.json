@@ -1,5 +1,5 @@
 {
-	"name": "gulp-base64",
+	"name": "gulp-all-base64",
 	"description": "replace images link to base64",
 	"version": "0.1.1",
 	"author": {
