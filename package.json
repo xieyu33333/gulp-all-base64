@@ -1,7 +1,7 @@
 {
 	"name": "gulp-all-base64",
 	"description": "replace images link to base64",
-	"version": "0.1.1",
+	"version": "0.1.4",
 	"author": {
 		"name": "xieyu33333",
 		"email": "xieyu33333@gmail.com"

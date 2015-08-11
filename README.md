@@ -4,7 +4,7 @@
     
     gulp.src(*.css)
         .pipe(base64({
-            baseDir: 'src'
+            baseDir: 'src/css'
         }))
         .pipe(gulp.dest('build'));
 

@@ -6,7 +6,7 @@ function toBase64(options) {
     var opts = options || {};
     var rule = opts.rule || /url\([^\)]+\)/g;
     var initFileType = opts.filetype || 'css';
-    var baseDir = opts.baseDir || __dirname;
+    var baseDir = opts.baseDir || '.';
 
     return through.obj(function (file, enc, cb) {
         if (file.isNull()) {
@@ -21,10 +21,12 @@ function toBase64(options) {
 
         var content = file.contents.toString();
         var images = content.match(rule);
-        var currentPath = baseDir;
+        var currentPath = __dirname + '../../../' + baseDir;
         images.forEach(function(item) {
-            imageURL = imageURL.replace(/\(|\)|\'/g, '');
-            var filepath = fs.realpathSync(path.join(currentPath, imageURL));
+            imageURL = item.replace(/\(|\)|\'/g, '');
+            imageURL = imageURL.replace(/^url/g, '');
+            var route = path.join(currentPath, imageURL);
+            var filepath = fs.realpathSync(route);
             var extname = path.extname(imageURL).slice(1);
             var imageContent = new Buffer(fs.readFileSync(filepath)).toString('base64');
             if (initFileType === 'css') {
